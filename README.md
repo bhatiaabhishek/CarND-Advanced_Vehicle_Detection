@@ -15,30 +15,33 @@ The goals / steps of this project are the following:
 
 ###Feature Extraction
 
-The feature extraction process is based on three methods: Histogram-Of-Gradients(HOG), Color binning, and spatial feature extraction. The functions `get_hog_features()`, `color_hist()` and `bin_spatial()` contain implementations respectively. First I started with preparing file lists of all vehicle and non-vehicle images. I then pass these lists to function `train_classifier()` which reads-in each image and performs feature extraction. For a given image; hog, spatial and color features are concatenated together to make a feature vector for that image. The following example shows hog images for a vehicle as well as non-vehicle image from the training set. It is generated using `YCrCb` color-space and HOG parameters of `pix_per_cell=2`, `orient=9` and `cels_per_block=2`.
+The feature extraction process is based on three methods: Histogram-Of-Gradients(HOG), Color binning, and spatial feature extraction. The functions `get_hog_features()`, `color_hist()` and `bin_spatial()` contain implementations respectively. First I started with preparing file lists of all vehicle and non-vehicle images. I then pass these lists to function `train_classifier()` which reads-in each image and performs feature extraction. For a given image; hog, spatial and color features are concatenated together to make a feature vector for that image. The following example shows hog images (each channel) for a vehicle as well as non-vehicle image from the training set. It is generated using `YCrCb` color-space and HOG parameters of `pix_per_cell=8`, `orient=9` and `cells_per_block=2`.
 
-<img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/vehicles/GTI_Right/image0038.png" width="30%"> 
+Vehicle: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/test_images/Vehicle.png" width="30%"> 
 
+Hog CH1: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/Vehicle_ch1.png" width="30%">
 
+Hog CH2: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/Vehicle_ch2.png" width="30%">
 
-I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
-
-![alt text][image1]
-
-I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
-
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+Hog CH3: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/Vehicle_ch3.png" width="30%">
 
 
-![alt text][image2]
+I explored differenct color space, hog features, color bins and spatial size, and settled on the following:
 
-####2. Explain how you settled on your final choice of HOG parameters.
+`
+Color space = YCrCb
+pix_per_cell = 8
+orient = 9
+cells_per_block = 2
+color histogram bins = 32
+spatial size  = (8,8)
+`
+I played around with hog features and noticed that the gradients were more chaotic (less sharpness in image) when I decreased `orient`. But for values more than 9, it deteriorated as well.
 
-I tried various combinations of parameters and...
+###Classication
 
-####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
+I used `sklearn.preprocessing.StandardScaler()` to normalize the feature set that was extracted. I then used a linear classifier to classify car/non-car images. `sklearn.svm.LinearSVC` is used for this purporse. The function `train_classifier` is where this functionality is implemented.
 
-I trained a linear SVM using...
 
 ###Sliding Window Search
 
