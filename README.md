@@ -25,7 +25,7 @@ Hog CH2: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Dete
 
 Hog CH3: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/Vehicle_ch3.png" width="30%">
 
-Non-Vehicle: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/test_images/Non-Vehicle.png" width="30%"> 
+Non-Vehicle: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/test_images/Non-vehicle.png" width="30%"> 
 
 Hog CH1: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/Non-Vehicle_ch1.png" width="30%">
 
