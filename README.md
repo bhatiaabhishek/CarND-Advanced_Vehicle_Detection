@@ -55,13 +55,13 @@ I used `sklearn.preprocessing.StandardScaler()` to normalize the feature set tha
 
 I used a sliding window approach to sample the image and then look for a positive detection for each window. The region of interest that I picked was the lower 50% of the image since this is where the cars will always be. The region of interest is then sampled with a window size of 96x96, resized to 64x64 (to match the actual training image size) and then used to extract the same features as in training. The trained classifier is then used to predict the class of the sample. 
 
-When HOG calculation is done for every window, the pipeline becomes painfuly slow. It takes an hour on my Macbook Pro to process a 50 second video. To avoid this, the HOG features are calculated on the whole image before sampling with the windows (function `find_cars1()`). This cuts downs the time to 15 minutes for the same video. To use the window size of 96x96 (found through trial), instead of increasing the window size by 1.5 (64x1.5 = 96), the image is scaled down by 1. Also, I used `cells_per_step = 2` for search, to obtain a 75% overlap between adjacent windows.
+When HOG calculation is done for every window, the pipeline becomes painfuly slow. It takes an hour on my Macbook Pro to process a 50 second video. To avoid this, the HOG features are calculated on the whole image before sampling with the windows (function `find_cars1()`). This cuts downs the time to 15 minutes for the same video. To use the window size of 96x96 (found through trial), instead of increasing the window size by 1.5 (64x1.5 = 96), the image is scaled down by 1.5. Also, I use `cells_per_step = 2` for search, to obtain a 75% overlap between adjacent windows.
 
 The following example is a representation of the sliding windows on an image. The windows correspond to positive detection.
 
 <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/test1_sliding_windows.jpg" width="30%">
 
-I then calculated a heatmap of the positive detections (`add_heat()`) and thresholded it to remove **false positives**. `scipy.ndimage.measurements.label()` is then used to determine individual blobs in the heatmap and to construct bounding boxes on the image. The following images show an example of the heatmap and the final bounding boxes of the same image.
+I then calculate a heatmap of the positive detections (`add_heat()`) and threshold it to remove **false positives**. `scipy.ndimage.measurements.label()` is then used to determine individual blobs in the heatmap and to construct bounding boxes on the image. The following images show an example of the heatmap and the final bounding boxes of the same image.
 
 Heatmap: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/test1_heatmap.jpg" width="30%">
 
