@@ -25,6 +25,14 @@ Hog CH2: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Dete
 
 Hog CH3: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/Vehicle_ch3.png" width="30%">
 
+Non-Vehicle: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/test_images/Non-Vehicle.png" width="30%"> 
+
+Hog CH1: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/Non-Vehicle_ch1.png" width="30%">
+
+Hog CH2: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/Non-Vehicle_ch2.png" width="30%">
+
+Hog CH3: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/Non-Vehicle_ch3.png" width="30%">
+
 
 I explored differenct color spaces, hog features, color bins and spatial size, and settled on the following:
 
@@ -56,6 +64,7 @@ The following example is a representation of the sliding windows on an image. Th
 I then calculated a heatmap of the positive detections and thresholded it to remove false positives. `scipy.ndimage.measurements.label()` is then used to determine individual blobs in the heatmap and to construct bounding boxes on the image. The following images show an example of the heatmap and the final bounding boxes of the same image.
 
 Heatmap: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/test1_heatmap.jpg" width="30%">
+
 
 Final Output <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/test1_output_boxes.jpg" width="30%">
 
