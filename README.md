@@ -69,6 +69,8 @@ Heatmap: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Dete
 Final Output: <img src="https://github.com/bhatiaabhishek/CarND-Advanced_Vehicle_Detection/blob/master/output_images/test1_output_boxes.jpg" width="30%">
 
 
+**To improve classifier's reliability**, few considerations were made. Using HOG alone did not yield good enough results. The testing accuracy was less than 97% with HOG features alone. Color and spatial binning were added which pulled the accuracy to >99%. Also, as explained above, the threshold on heatmap was increased to (>2) for the video processing to remove outliers i.e. false positives. I also made sure to crop the image to classify only lower half of the image, since a car can only be present in that zone. 
+
 ### Video Implementation
 
 For the video, I have also added my Advanced Lane Detection pipeline to the vehicle detection pipeline.
