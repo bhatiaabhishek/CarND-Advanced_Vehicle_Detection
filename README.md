@@ -85,3 +85,6 @@ Here's a [link to my video result](./project_video_veh_detect.mp4)
 
 Some trial and error went into finding the best color space and the window size that works. Choosing a large window size caused the cars near the edge of the frames to be un-dectected. It also led to smaller cars being un-detected. On the other hand, a very small window created the issue of false positives as well as a long runtime. If we have too many windows, the runtime adds up, especially for a 30fps video. Another gotcha, is that the features needed to be stacked the same way as were during the training phase. Another parameter to tweak was the overlap between the windows during search. Having a smaller overlap definitely helped in my case, at the cost of longer runtime.
 The output boxes are wobbly but given more time, the boxes could be averaged over few frames to have a smoother output.
+
+### Added features
+I added code to smooth out the bounding boxes and to track vehicles individually frame-to-frame. This lead to a much better vehicle tracking output.
